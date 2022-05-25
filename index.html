@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <title>Frontend Mentor | Advice generator app</title>
+
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <!-- <link rel="stylesheet" href="build.css">
+  <link rel="stylesheet" href="style2.css"> -->
+</head>
+
+<body class="flex justify-center items-center min-h-screen font-manrope">
+  <div
+    class="flex flex-col items-center bg-darkgrayishblue text-lightcyan h-80 w-[35rem] rounded-3xl shadow-2xl p-5 text-center relative">
+
+    <div class="text-neongreen text advice uppercase font-bold text-sm mt-5"></div>
+
+    <div class="text-lightcyan text-2xl leading-relaxed font-extrabold mt-7 message"></div>
+    <img src="./images/pattern-divider-desktop.svg" class="absolute bottom-14" alt="">
+    <button class="absolute bg-neongreen p-4 rounded-full dice" onclick="fetchapi()"><img src="./images/icon-dice.svg"
+        alt=""></button>
+  </div>
+  <footer class="fixed bottom-3 text-center text-lightcyan text-lg">Made by me </footer>
+  <script src="./index.js" type="module"></script>
+  <script>
+    const advice = document.querySelector(".advice")
+    const text = document.querySelector(".message")
+    function setdata(api) {
+      const adviceNum = api.slip.id;
+      advice.innerHTML = `advice #${adviceNum}`;
+
+      text.innerHTML = `"${api.slip.advice}"`
+    }
+    function fetchapi() {
+      fetch("https://api.adviceslip.com/advice").then((res) => res.json()).then((api) => setdata(api))
+    }
+    fetchapi()
+  </script>
+</body>
+
+</html>

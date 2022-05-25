@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: hsl(218, 23%, 16%);
+}
+.advice {
+    letter-spacing: 0.3rem;
+}
+.dice {
+    bottom: 0;
+    transform: translateY(50%);
+    transition: all 0.2s ease;
+}
+.dice:hover {
+    box-shadow: 0 0px 20px hsl(150, 100%, 66%);
+}
